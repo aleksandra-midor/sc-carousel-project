@@ -22,7 +22,6 @@ const handleSubmit = () => {
   })
 }
 
-
   return (
     <main className='SearchPage'>
       <h1>Search Page</h1>
@@ -34,6 +33,10 @@ const handleSubmit = () => {
       onChange={(event) => {
         setSearchInput(event.target.value)
       }}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter') {
+        handleSubmit()
+      }}}
       >
       </input>
     </label>
