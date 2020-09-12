@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import flickr from "../../apiKeys";
 import ThumbsGallery from "../../components/ThumbsGallery/ThumbsGallery";
-import "./SearchPage.scss"
+import "./SearchPage.scss";
 
 const SearchPage = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -29,25 +29,27 @@ const SearchPage = () => {
   return (
     <main className="SearchPage">
       <article className="SearchPage_Search">
-        <label>
-          What are you looking for?
-          <input
-            value={searchInput}
-            type="text"
-            onChange={(event) => {
-              setSearchInput(event.target.value);
-            }}
-            onKeyDown={(event) => {
-              if (event.key === "Enter") {
-                handleSubmit();
-              }
-            }}
-          ></input>
-        </label>
+        <div className="Search">
+          <label>
+            What are you looking for?
+            <input
+              value={searchInput}
+              type="text"
+              onChange={(event) => {
+                setSearchInput(event.target.value);
+              }}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                  handleSubmit();
+                }
+              }}
+            ></input>
+          </label>
 
-        <button disabled={searchInput === ""} onClick={handleSubmit}>
-          Search
-        </button>
+          <button disabled={searchInput === ""} onClick={handleSubmit}>
+            Search
+          </button>
+        </div>
       </article>
 
       <article className="SearchPage_Gallery">
