@@ -1,11 +1,27 @@
 import React, { useState } from 'react'
 import flickr from '../../apiKeys'
+import ThumbsGallery from '../../components/ThumbsGallery/ThumbsGallery';
 
 const SearchPage = () => {
 
 const [searchInput, setSearchInput] = useState('');
 const [fetchedData, setFetchedData] = useState({})
+const [showGallery, setShowGallery] = useState(false)
 console.log(fetchedData, searchInput)
+
+const handleSubmit = () => { 
+  fetch (`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickr.key}&tags=${searchInput}&format=json&nojsoncallback=1`)
+  .then((res) => res.json())
+  .then((data) => {
+    if (data.stat === 'ok') {
+      setFetchedData(data) 
+      if (data.photos.total !== '0') {
+        setShowGallery(true)
+      }
+    } else {console.error(data)}
+  })
+}
+
 
   return (
     <main className='SearchPage'>
@@ -24,19 +40,12 @@ console.log(fetchedData, searchInput)
 
     <button
     disabled={searchInput === ''}
-    onClick={() => {
-      fetch (`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickr.key}&tags=${searchInput}&format=json&nojsoncallback=1`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.stat === 'ok') {
-          setFetchedData(data)
-        }
-      })
-    }}
+    onClick={handleSubmit}
     >
     Search</button>
     <p>{searchInput}</p>
-    
+   {showGallery && (<ThumbsGallery></ThumbsGallery>)}
+
     </main>
     
   )
