@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import flickr from '../../apiKeys'
 
 const SearchPage = () => {
 
@@ -18,6 +19,14 @@ const [searchInput, setSearchInput] = useState('');
       >
       </input>
     </label>
+
+    <button
+    disabled={searchInput === ''}
+    onClick={() => {
+      alert (searchInput)
+    }}
+    >
+    Search</button>
     <p>{searchInput}</p>
     
     </main>
