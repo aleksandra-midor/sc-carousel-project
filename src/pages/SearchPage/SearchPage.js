@@ -4,6 +4,8 @@ import flickr from '../../apiKeys'
 const SearchPage = () => {
 
 const [searchInput, setSearchInput] = useState('');
+const [fetchedData, setFetchedData] = useState({})
+console.log(fetchedData, searchInput)
 
   return (
     <main className='SearchPage'>
@@ -23,7 +25,13 @@ const [searchInput, setSearchInput] = useState('');
     <button
     disabled={searchInput === ''}
     onClick={() => {
-      alert (searchInput)
+      fetch (`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickr.key}&tags=${searchInput}&format=json&nojsoncallback=1`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.stat === 'ok') {
+          setFetchedData(data)
+        }
+      })
     }}
     >
     Search</button>
