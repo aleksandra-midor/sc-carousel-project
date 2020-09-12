@@ -44,7 +44,9 @@ const handleSubmit = () => {
     >
     Search</button>
     <p>{searchInput}</p>
-   {showGallery && (<ThumbsGallery></ThumbsGallery>)}
+   {showGallery && 
+   (
+   <ThumbsGallery data={fetchedData.photos}></ThumbsGallery>)}
 
     </main>
     
