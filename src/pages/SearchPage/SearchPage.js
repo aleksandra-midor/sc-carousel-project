@@ -10,6 +10,7 @@ const SearchPage = () => {
   const [fetchedData, setFetchedData] = useState({});
   const [showGallery, setShowGallery] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [selectedPicture, setSelectedPicture] = useState({index:undefined, photo:undefined})
 
   console.log(fetchedData, searchInput);
 
@@ -69,10 +70,15 @@ const SearchPage = () => {
           <ThumbsGallery
             data={fetchedData.photos}
             kupa={setShowModal}
+            setPicture={setSelectedPicture}
           ></ThumbsGallery>
         )}
       </article>
-      <PictureModal visible={showModal} setVisible={setShowModal}></PictureModal>
+      <PictureModal 
+      visible={showModal} 
+      setVisible={setShowModal}
+      selectedPicture={selectedPicture}>  
+      </PictureModal>
       <article></article>
     </main>
   );
