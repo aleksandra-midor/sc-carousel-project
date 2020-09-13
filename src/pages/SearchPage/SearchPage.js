@@ -28,7 +28,7 @@ const SearchPage = () => {
 
   return (
     <main className="SearchPage">
-      <article className="SearchPage_Search">
+      <article className={`SearchPage_Search ${!showGallery ? 'SearchPage_Search-fullHeight' : ''}`}>
         <div className="Search">
           <label>
             What are you looking for?
