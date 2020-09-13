@@ -7,4 +7,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  .Modal_Inner {
+    position: relative;
+    height: 50vh;
+    width: 50vw;
+    box-shadow: 0 0 30px #00000078;
+    background-color: white;
+  }
+
+  .ModalClose {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    background: transparent;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+  }
 }

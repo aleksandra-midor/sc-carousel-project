@@ -72,7 +72,7 @@ const SearchPage = () => {
           ></ThumbsGallery>
         )}
       </article>
-      <PictureModal visible={showModal}></PictureModal>
+      <PictureModal visible={showModal} setVisible={setShowModal}></PictureModal>
       <article></article>
     </main>
   );
