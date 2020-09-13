@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import flickr from "../../apiKeys";
 import ThumbsGallery from "../../components/ThumbsGallery/ThumbsGallery";
 import "./SearchPage.scss";
+import IsLoadingContext from "../../Context/IsLoadingContext";
 
 const SearchPage = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -9,12 +10,16 @@ const SearchPage = () => {
   const [showGallery, setShowGallery] = useState(false);
   console.log(fetchedData, searchInput);
 
+  const spinner = useContext(IsLoadingContext)
+
   const handleSubmit = () => {
+    spinner.setLoading(true)
     fetch(
       `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickr.key}&tags=${searchInput}&format=json&nojsoncallback=1`
     )
       .then((res) => res.json())
       .then((data) => {
+        spinner.setLoading(false)
         if (data.stat === "ok") {
           setFetchedData(data);
           if (data.photos.total !== "0") {
