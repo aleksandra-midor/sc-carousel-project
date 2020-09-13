@@ -4,6 +4,7 @@ import SearchPage from "./pages/SearchPage/SearchPage";
 import Spinner from "./components/Spinner/Spinner";
 import "./components/Spinner/Spinner.scss";
 import IsLoadingContext from "./Context/IsLoadingContext";
+import PictureModal from "./components/PictureModal/PictureModal"
 
 function App() {
 const [loading, setLoading] = useState (false)

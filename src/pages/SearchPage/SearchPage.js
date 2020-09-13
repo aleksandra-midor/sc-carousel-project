@@ -3,23 +3,26 @@ import flickr from "../../apiKeys";
 import ThumbsGallery from "../../components/ThumbsGallery/ThumbsGallery";
 import "./SearchPage.scss";
 import IsLoadingContext from "../../Context/IsLoadingContext";
+import PictureModal from "../../components/PictureModal/PictureModal";
 
 const SearchPage = () => {
   const [searchInput, setSearchInput] = useState("");
   const [fetchedData, setFetchedData] = useState({});
   const [showGallery, setShowGallery] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
   console.log(fetchedData, searchInput);
 
-  const spinner = useContext(IsLoadingContext)
+  const spinner = useContext(IsLoadingContext);
 
   const handleSubmit = () => {
-    spinner.setLoading(true)
+    spinner.setLoading(true);
     fetch(
       `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickr.key}&tags=${searchInput}&format=json&nojsoncallback=1`
     )
       .then((res) => res.json())
       .then((data) => {
-        spinner.setLoading(false)
+        spinner.setLoading(false);
         if (data.stat === "ok") {
           setFetchedData(data);
           if (data.photos.total !== "0") {
@@ -33,7 +36,11 @@ const SearchPage = () => {
 
   return (
     <main className="SearchPage">
-      <article className={`SearchPage_Search ${!showGallery ? 'SearchPage_Search-fullHeight' : ''}`}>
+      <article
+        className={`SearchPage_Search ${
+          !showGallery ? "SearchPage_Search-fullHeight" : ""
+        }`}
+      >
         <div className="Search">
           <label>
             What are you looking for?
@@ -59,9 +66,14 @@ const SearchPage = () => {
 
       <article className="SearchPage_Gallery">
         {showGallery && (
-          <ThumbsGallery data={fetchedData.photos}></ThumbsGallery>
+          <ThumbsGallery
+            data={fetchedData.photos}
+            kupa={setShowModal}
+          ></ThumbsGallery>
         )}
       </article>
+      <PictureModal visible={showModal}></PictureModal>
+      <article></article>
     </main>
   );
 };
