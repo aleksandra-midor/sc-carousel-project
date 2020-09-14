@@ -8,10 +8,10 @@ const ThumbsGallery = (props) => {
   return (
     <ul className="ThumbsGallery">
       {props.data.photo.map((el, i) => (
-        <li className="ThumbsGallery_Image" key={i}>
-          <div onClick = {() => {
+        <li key={i}>
+          <div className="ThumbsGallery_Image" onClick = {() => {
             props.kupa(true)
-            props.setPicture({i,el})
+            props.setPicture(i)
           }
         }>
           <Image data={el} ></Image>
