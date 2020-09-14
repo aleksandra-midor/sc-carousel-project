@@ -8,7 +8,7 @@ const Spinner = () => {
   if (isVisible.loading) {
     return (
       <div className="Spinner">
-        <div>Loading...{isVisible.loading ? "true" : "false"}</div>
+        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
       </div>
     );
   } else {

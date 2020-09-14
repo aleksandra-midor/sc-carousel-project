@@ -8,8 +8,20 @@ const PictureModal = (props) => {
   console.log(props);
 
   const nextPicture = () => {
-    props.setSelectedPicture(props.selectedPicture + 1);
+    if (props.selectedPicture !==props.allPictures.length - 1) {
+      props.setSelectedPicture(props.selectedPicture + 1);
+    } else {
+      props.setSelectedPicture(0)
+    }
   };
+
+  const prevPicture = () => {
+    if (props.selectedPicture !==0) {
+      props.setSelectedPicture(props.selectedPicture - 1);
+    } else {
+      props.setSelectedPicture(props.allPictures.length - 1)
+    }
+  }
 
   if (props.visible) {
     return (
@@ -23,6 +35,7 @@ const PictureModal = (props) => {
           </button>
           <Image data={props.allPictures[props.selectedPicture]}></Image>
 
+          <button onClick={prevPicture}>previouse</button>
           <button onClick={nextPicture}>next</button>
         </div>
       </div>
