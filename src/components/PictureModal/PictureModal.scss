@@ -10,10 +10,33 @@
 
   .Modal_Inner {
     position: relative;
-    height: 50vh;
-    width: 50vw;
+    height: 70vh;
+    width: 70vh;
     box-shadow: 0 0 30px #00000078;
     background-color: white;
+
+    .Modal_Image {
+      height: 70%;
+    }
+
+    .Carousel {
+      height: 30%;
+      display: flex;
+
+      .Carousel_Buttons {
+        position: absolute;
+        bottom: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        
+        button {
+          border: none;
+          background: transparent;
+          color: white;
+     }
+      }
+    }
   }
 
   .ModalClose {
@@ -22,8 +45,6 @@
     right: 5px;
     border: none;
     background: transparent;
-    width: 2rem;
-    height: 2rem;
-    cursor: pointer;
+    color: white;
   }
 }

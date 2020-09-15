@@ -6,9 +6,11 @@
   border: 0;
   margin: 0;
 
-  .ThumbsGallery_Image {
+  .ThumbsGallery_Button {
     width: 200px;
     height: 200px;
     padding: 10px;
+    border: none;
+    background-color: transparent;
   }
 }

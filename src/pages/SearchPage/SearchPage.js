@@ -44,7 +44,7 @@ const SearchPage = () => {
       >
         <div className="Search">
           <label>
-            What are you looking for?
+            What pictures are you looking for?
             <input
               value={searchInput}
               type="text"
@@ -68,7 +68,7 @@ const SearchPage = () => {
       <article className="SearchPage_Gallery">
         {showGallery && (
           <ThumbsGallery
-            data={fetchedData.photos}
+            data={fetchedData.photos.photo}
             kupa={setShowModal}
             setPicture={setSelectedPicture}
           ></ThumbsGallery>
@@ -81,6 +81,7 @@ const SearchPage = () => {
         selectedPicture={selectedPicture}
         setSelectedPicture={setSelectedPicture}
         allPictures={fetchedData.photos.photo}
+
       ></PictureModal>
       )}
       <article></article>
