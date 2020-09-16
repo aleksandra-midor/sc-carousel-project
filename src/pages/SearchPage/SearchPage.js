@@ -23,7 +23,6 @@ const SearchPage = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        spinner.setLoading(false);
         if (data.stat === "ok") {
           setFetchedData(data);
           if (data.photos.total !== "0") {
@@ -33,6 +32,7 @@ const SearchPage = () => {
           console.error(data);
         }
       });
+    spinner.setLoading(false);
   };
 
   return (
@@ -44,7 +44,7 @@ const SearchPage = () => {
       >
         <div className="Search">
           <label>
-            What pictures are you looking for?
+            Hi! What pictures are you looking for?
             <input
               value={searchInput}
               type="text"
@@ -76,13 +76,12 @@ const SearchPage = () => {
       </article>
       {fetchedData.photos && (
         <PictureModal
-        visible={showModal}
-        setVisible={setShowModal}
-        selectedPicture={selectedPicture}
-        setSelectedPicture={setSelectedPicture}
-        allPictures={fetchedData.photos.photo}
-
-      ></PictureModal>
+          visible={showModal}
+          setVisible={setShowModal}
+          selectedPicture={selectedPicture}
+          setSelectedPicture={setSelectedPicture}
+          allPictures={fetchedData.photos.photo}
+        ></PictureModal>
       )}
       <article></article>
     </main>

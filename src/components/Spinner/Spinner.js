@@ -8,11 +8,16 @@ const Spinner = () => {
   if (isVisible.loading) {
     return (
       <div className="Spinner">
-        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        <div class="lds-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
     );
   } else {
-    return null
+    return null;
   }
 };
 

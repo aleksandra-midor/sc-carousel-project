@@ -1,9 +1,12 @@
 import React from "react";
 import "./PictureModal.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes, faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTimes,
+  faAngleLeft,
+  faAngleRight,
+} from "@fortawesome/free-solid-svg-icons";
 import Image from "../Image/Image";
-import ThumbsGallery from "../ThumbsGallery/ThumbsGallery";
 
 const PictureModal = (props) => {
   console.log(props);
@@ -64,12 +67,14 @@ const PictureModal = (props) => {
               }
             ></Image>
 
-          <div className="Carousel_Buttons">
-           
-            <button onClick={prevPicture}><FontAwesomeIcon icon={faAngleLeft} size="10x" /></button>
-            <button onClick={nextPicture}><FontAwesomeIcon icon={faAngleRight} size="10x" /></button>
-          </div>
-
+            <div className="Carousel_Buttons">
+              <button onClick={prevPicture}>
+                <FontAwesomeIcon icon={faAngleLeft} size="10x" />
+              </button>
+              <button onClick={nextPicture}>
+                <FontAwesomeIcon icon={faAngleRight} size="10x" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
